@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Logout from './Logout';
-import Collapse from 'bootstrap/js/dist/collapse';
 
 const Navbar = () => {
   const location = useLocation();
@@ -13,20 +12,10 @@ const Navbar = () => {
     setRole(localStorage.getItem('role'));
   }, [location]);
 
-  useEffect(() => {
-    const navbarCollapse = document.getElementById('navbarNav');
-    if (navbarCollapse) {
-      new Collapse(navbarCollapse, { toggle: false });
-    }
-  }, []);
-
   const handleLinkClick = () => {
     const navbarCollapse = document.getElementById('navbarNav');
     if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-      const collapseInstance = Collapse.getInstance(navbarCollapse);
-      if (collapseInstance) {
-        collapseInstance.hide();
-      }
+      navbarCollapse.classList.remove('show');
     }
   };
 
