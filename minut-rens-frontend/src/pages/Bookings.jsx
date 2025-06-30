@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -27,7 +28,10 @@ const Bookings = () => {
       <h2 className="mb-4 text-center">Dine bookinger</h2>
 
       {bookings.length === 0 ? (
+        <>
         <div className="alert alert-info text-center">Du har ingen bookinger endnu.</div>
+        <Link to="/book" className="btn btn-primary btn-lg">Book en service</Link>
+        </>
       ) : (
         <div className="row row-cols-1 g-4">
           {bookings.map((b) => (
