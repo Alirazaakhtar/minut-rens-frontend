@@ -8,7 +8,7 @@ const ServicePage = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/services');
+        const res = await axios.get('https://minut-rens-backend-production.up.railway.app/services');
         setServices(res.data);
       } catch (err) {
         console.error('Fejl ved hentning af services:', err);
