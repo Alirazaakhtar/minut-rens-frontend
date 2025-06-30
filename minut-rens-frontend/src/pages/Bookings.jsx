@@ -30,7 +30,9 @@ const Bookings = () => {
       {bookings.length === 0 ? (
         <>
         <div className="alert alert-info text-center">Du har ingen bookinger endnu.</div>
+        <div className='text-center'>
         <Link to="/book" className="btn btn-primary btn-lg">Book en service</Link>
+        </div>
         </>
       ) : (
         <div className="row row-cols-1 g-4">
