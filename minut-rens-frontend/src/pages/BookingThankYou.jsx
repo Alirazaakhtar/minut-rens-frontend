@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 const BookingThankYou = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="text-center">
-        <h1 className="display-4 mb-4">Tak for din booking!</h1>
+    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
+      <div className="text-center px-3">
+        <h1 className="display-5 mb-4">Tak for din booking!</h1>
         <p className="lead mb-4">Vi har modtaget din booking og glæder os til at hjælpe dig.</p>
-        <Link to="/bookings" className="btn btn-primary btn-lg">Se dine bookinger</Link>
+        <Link to="/bookings" className="btn btn-primary btn-lg w-100">Se dine bookinger</Link>
       </div>
     </div>
   );

@@ -43,9 +43,43 @@ const AdminPage = () => {
     }
   };
 
+  const renderTable = (title, bookingsList) => (
+    <div className="mb-5">
+      <h4 className="mb-3">{title}</h4>
+      {bookingsList.length === 0 ? (
+        <p>Ingen {title.toLowerCase()}.</p>
+      ) : (
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Booking-ID</th>
+                <th>Booking dato</th>
+                <th>Status</th>
+                <th>Pris</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {bookingsList.map(b => (
+                <tr key={b.id}>
+                  <td>{b.id}</td>
+                  <td>{new Date(b.booking_date).toLocaleDateString()}</td>
+                  <td>{b.status}</td>
+                  <td>{b.total_price} kr.</td>
+                  <td><Link className='btn btn-primary btn-sm' to={`/bookings/edit/${b.id}`}>Rediger</Link></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+
   return (
-    <div className="container">
-      <h2>Bookinger</h2>
+    <div className="container mt-5 px-3">
+      <h2 className="mb-4 text-center">Bookinger</h2>
       <form className="mb-4 d-flex" onSubmit={handleSearch}>
         <input
           type="number"
@@ -57,89 +91,9 @@ const AdminPage = () => {
         <button className="btn btn-primary" type="submit">Søg</button>
       </form>
 
-      <h4>Dagens bookinger</h4>
-      {todayBookings.length === 0 ? (
-        <p>Ingen bookinger for i dag.</p>
-      ) : (
-        <table className="table table-striped mb-5">
-          <thead>
-            <tr>
-              <th>Booking-ID</th>
-              <th>Booking dato</th>
-              <th>Status</th>
-              <th>Pris</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {todayBookings.map(b => (
-              <tr key={b.id}>
-                <td>{b.id}</td>
-                <td>{new Date(b.booking_date).toLocaleDateString()}</td>
-                <td>{b.status}</td>
-                <td>{b.total_price} kr.</td>
-                <td><Link className='btn btn-primary' to={`/bookings/edit/${b.id}`}>Rediger</Link></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-
-      <h4>Tidligere bookinger</h4>
-      {previousBookings.length === 0 ? (
-        <p>Ingen tidligere bookinger.</p>
-      ) : (
-        <table className="table table-striped mb-5">
-          <thead>
-            <tr>
-              <th>Booking-ID</th>
-              <th>Booking dato</th>
-              <th>Status</th>
-              <th>Pris</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {previousBookings.map(b => (
-              <tr key={b.id}>
-                <td>{b.id}</td>
-                <td>{new Date(b.booking_date).toLocaleDateString()}</td>
-                <td>{b.status}</td>
-                <td>{b.total_price} kr.</td>
-                <td><Link className='btn btn-primary' to={`/bookings/edit/${b.id}`}>Rediger</Link></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-
-      <h4>Færdige bookinger</h4>
-      {finishedBookings.length === 0 ? (
-        <p>Ingen færdige bookinger.</p>
-      ) : (
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Booking-ID</th>
-              <th>Booking dato</th>
-              <th>Status</th>
-              <th>Pris</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {finishedBookings.map(b => (
-              <tr key={b.id}>
-                <td>{b.id}</td>
-                <td>{new Date(b.booking_date).toLocaleDateString()}</td>
-                <td>{b.status}</td>
-                <td>{b.total_price} kr.</td>
-                <td><Link className='btn btn-primary' to={`/bookings/edit/${b.id}`}>Rediger</Link></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      {renderTable('Dagens bookinger', todayBookings)}
+      {renderTable('Tidligere bookinger', previousBookings)}
+      {renderTable('Færdige bookinger', finishedBookings)}
     </div>
   );
 };

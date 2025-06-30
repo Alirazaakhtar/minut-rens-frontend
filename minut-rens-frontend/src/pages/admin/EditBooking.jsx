@@ -28,22 +28,18 @@ const EditBooking = () => {
   const handleChange = (e) => {
     setBooking({ ...booking, [e.target.name]: e.target.value });
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
     try {
-
-      // Før du sender til backend
-        const formatDate = (dateStr) => dateStr?.substring(0, 10);
-
-        const bookingData = {
-           ...booking,
-          drop_off_date: formatDate(booking.drop_off_date),
-          pick_up_date: formatDate(booking.pick_up_date),
-        };
+      const formatDate = (dateStr) => dateStr?.substring(0, 10);
+      const bookingData = {
+        ...booking,
+        drop_off_date: formatDate(booking.drop_off_date),
+        pick_up_date: formatDate(booking.pick_up_date),
+      };
 
       await axios.put(`https://minut-rens-backend-production.up.railway.app/bookings/${id}`, bookingData, {
         headers: { Authorization: `Bearer ${token}` },
@@ -56,31 +52,26 @@ const EditBooking = () => {
   };
 
   if (!booking) {
-  return (
-    <div className="d-flex justify-content-center align-items-center my-5">
-      <div className="spinner-border text-primary" role="status">
-        <span className="visually-hidden">Indlæser...</span>
+    return (
+      <div className="d-flex justify-content-center align-items-center my-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Indlæser...</span>
+        </div>
       </div>
-    </div>
-  );
-}
-  return (
-    <div className="container">
-      <h2>Rediger booking #{id}</h2>
-      <form onSubmit={handleSubmit}>
+    );
+  }
 
+  return (
+    <div className="container mt-5 px-3" style={{ maxWidth: '600px' }}>
+      <h2 className="mb-4 text-center">Rediger booking #{id}</h2>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label><b>Bruger-ID:</b> {booking.user_id}</label>
         </div>
 
         <div className="mb-3">
           <label>Service</label>
-          <select
-            name="service_id"
-            value={booking.service_id}
-            onChange={handleChange}
-            className="form-control"
-          >
+          <select name="service_id" value={booking.service_id} onChange={handleChange} className="form-select">
             {services.map(s => (
               <option key={s.id} value={s.id}>{s.name}</option>
             ))}
@@ -89,34 +80,17 @@ const EditBooking = () => {
 
         <div className="mb-3">
           <label>Afleveringsdato</label>
-          <input
-            type="date"
-            name="drop_off_date"
-            value={booking.drop_off_date?.substring(0, 10)}
-            onChange={handleChange}
-            className="form-control"
-          />
+          <input type="date" name="drop_off_date" value={booking.drop_off_date?.substring(0, 10)} onChange={handleChange} className="form-control" />
         </div>
 
         <div className="mb-3">
           <label>Afhentningsdato</label>
-          <input
-            type="date"
-            name="pick_up_date"
-            value={booking.pick_up_date?.substring(0, 10)}
-            onChange={handleChange}
-            className="form-control"
-          />
+          <input type="date" name="pick_up_date" value={booking.pick_up_date?.substring(0, 10)} onChange={handleChange} className="form-control" />
         </div>
 
         <div className="mb-3">
           <label>Status</label>
-          <select
-            name="status"
-            value={booking.status}
-            onChange={handleChange}
-            className="form-control"
-          >
+          <select name="status" value={booking.status} onChange={handleChange} className="form-select">
             <option value="modtaget">Modtaget</option>
             <option value="i gang">I gang</option>
             <option value="klar til afhentning">Klar til afhentning</option>
@@ -125,18 +99,12 @@ const EditBooking = () => {
           </select>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-4">
           <label>Pris</label>
-          <input
-            type="number"
-            name="total_price"
-            value={booking.total_price}
-            onChange={handleChange}
-            className="form-control"
-          />
+          <input type="number" name="total_price" value={booking.total_price} onChange={handleChange} className="form-control" />
         </div>
 
-        <button type="submit" className="btn btn-primary">Gem ændringer</button>
+        <button type="submit" className="btn btn-primary w-100">Gem ændringer</button>
       </form>
     </div>
   );

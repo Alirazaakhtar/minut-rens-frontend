@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-
 const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState('');
@@ -28,40 +27,41 @@ const AdminUsersPage = () => {
   );
 
   return (
-    <div className="container mt-5">
-      <h2>Alle brugere</h2>
+    <div className="container mt-5 px-3">
+      <h2 className="mb-4 text-center">Alle brugere</h2>
 
       <input
         type="text"
         placeholder="Søg efter navn eller email..."
-        className="form-control mb-3"
+        className="form-control mb-4"
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
 
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Navn</th>
-            <th>Email</th>
-            <th>Rolle</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.map(user => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-            <td><Link className='btn btn-primary' to={`/users/edit/${user.id}`}>Updater</Link></td>
-
+      <div className="table-responsive">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Navn</th>
+              <th>Email</th>
+              <th>Rolle</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.map(user => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+                <td><Link className='btn btn-primary btn-sm' to={`/users/edit/${user.id}`}>Updater</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

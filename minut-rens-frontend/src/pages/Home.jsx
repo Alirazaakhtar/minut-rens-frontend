@@ -19,8 +19,8 @@ const Home = () => {
       </div>
 
       <h2 className="mb-4 text-center">Vores afdelinger</h2>
-      <div className="row">
-        <div className="col-md-4 mb-4">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="col">
           <div className="card shadow-sm border-0 p-4 h-100">
             <h4>København</h4>
             <p><strong>Adresse:</strong><br />Vesterbrogade 41, 1620 København V</p>
@@ -34,7 +34,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="col-md-4 mb-4">
+        <div className="col">
           <div className="card shadow-sm border-0 p-4 h-100">
             <h4>Hillerød</h4>
             <p><strong>Adresse:</strong><br />Slotsgade 25, 3400 Hillerød</p>
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="col-md-4 mb-4">
+        <div className="col">
           <div className="card shadow-sm border-0 p-4 h-100">
             <h4>Helsingør</h4>
             <p><strong>Adresse:</strong><br />Stengade 45, 3000 Helsingør</p>

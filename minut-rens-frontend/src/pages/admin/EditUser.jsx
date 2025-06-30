@@ -32,8 +32,8 @@ const EditUser = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: '500px' }}>
-      <h2>Rediger Bruger</h2>
+    <div className="container mt-5 px-3" style={{ maxWidth: '500px' }}>
+      <h2 className="mb-4 text-center">Rediger Bruger</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Navn</label>
@@ -43,14 +43,14 @@ const EditUser = () => {
           <label className="form-label">Email</label>
           <input name="email" type="email" className="form-control" value={user.email} onChange={handleChange} required />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label">Rolle</label>
           <select name="role" className="form-select" value={user.role} onChange={handleChange} required>
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Gem ændringer</button>
+        <button type="submit" className="btn btn-primary w-100">Gem ændringer</button>
       </form>
     </div>
   );

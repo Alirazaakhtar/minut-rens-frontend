@@ -31,25 +31,25 @@ const EditService = () => {
     navigate('/services/admin');
   };
 
-  if (!service) return <p>Indlæser...</p>;
+  if (!service) return <p className="text-center mt-5">Indlæser...</p>;
 
   return (
-    <div className="container">
-      <h2>Rediger Service</h2>
+    <div className="container mt-5 px-3" style={{ maxWidth: '600px' }}>
+      <h2 className="mb-4 text-center">Rediger Service</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label>Navn</label>
-          <input className="form-control" value={service.name} onChange={(e) => setService({...service, name: e.target.value})} />
+          <label className="form-label">Navn</label>
+          <input className="form-control" value={service.name} onChange={(e) => setService({...service, name: e.target.value})} required />
         </div>
         <div className="mb-3">
-          <label>Beskrivelse</label>
-          <textarea className="form-control" value={service.description} onChange={(e) => setService({...service, description: e.target.value})} />
+          <label className="form-label">Beskrivelse</label>
+          <textarea className="form-control" value={service.description} onChange={(e) => setService({...service, description: e.target.value})} required />
         </div>
-        <div className="mb-3">
-          <label>Pris</label>
-          <input type="number" className="form-control" value={service.price} onChange={(e) => setService({...service, price: e.target.value})} />
+        <div className="mb-4">
+          <label className="form-label">Pris</label>
+          <input type="number" className="form-control" value={service.price} onChange={(e) => setService({...service, price: e.target.value})} required />
         </div>
-        <button type="submit" className="btn btn-success">Gem</button>
+        <button type="submit" className="btn btn-success w-100">Gem</button>
       </form>
     </div>
   );

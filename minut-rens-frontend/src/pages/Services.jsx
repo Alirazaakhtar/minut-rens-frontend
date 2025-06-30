@@ -20,16 +20,18 @@ const ServicePage = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Vores Services</h2>
-      <div className="row">
+      <h2 className="mb-5 text-center">Vores Services</h2>
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {services.map(service => (
-          <div key={service.id} className="col-md-4 mb-4">
+          <div key={service.id} className="col">
             <div className="card h-100 shadow-sm">
-              <div className="card-body">
-                <h5 className="card-title">{service.name}</h5>
-                <p className="card-text">{service.description}</p>
-                <p className="card-text fw-bold">{service.price} kr.</p>
-                <Link className='btn btn-success' to={"/book"}>Book</Link>
+              <div className="card-body d-flex flex-column">
+                <h5 className="card-title mb-3">{service.name}</h5>
+                <p className="card-text flex-grow-1">{service.description}</p>
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                  <span className="fw-bold">{service.price} kr.</span>
+                  <Link className='btn btn-primary' to="/book">Book</Link>
+                </div>
               </div>
             </div>
           </div>

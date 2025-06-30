@@ -55,53 +55,55 @@ const CreateBooking = () => {
   const selectedService = services.find(s => s.id === Number(booking.service_id));
   const total_price = selectedService?.price || 0;
 
-  if (confirmStep) {
-    return (
-      <div className="container mt-5" style={{ maxWidth: '500px' }}>
-        <h2 className="mb-4">Bekræft din booking</h2>
-        <p><strong>Service:</strong> {selectedService?.name}</p>
-        <p><strong>Afleveringsdato:</strong> {booking.drop_off_date}</p>
-        <p><strong>Afhentningsdato:</strong> {booking.pick_up_date}</p>
-        <p><strong>Total pris:</strong> {total_price} kr.</p>
-
-        <button onClick={handleSubmit} className="btn btn-success me-2">Bekræft booking</button>
-        <button onClick={() => setConfirmStep(false)} className="btn btn-secondary">Tilbage</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="container mt-5" style={{ maxWidth: '500px' }}>
-      <h2 className="mb-4">Opret booking</h2>
-      <form onSubmit={handleConfirm}>
-        <div className="mb-3">
-          <label className="form-label">Service:</label>
-          <select name="service_id" className="form-select" onChange={handleChange} required>
-            <option value="">Vælg en service</option>
-            {services.map(s => (
-              <option key={s.id} value={s.id}>{s.name + ' (' + s.price + ' kr)'}</option>
-            ))}
-          </select>
-        </div>
+    <div className="container mt-5 px-3" style={{ maxWidth: '600px' }}>
+      {confirmStep ? (
+        <div>
+          <h2 className="mb-4 text-center">Bekræft din booking</h2>
+          <div className="mb-3"><strong>Service:</strong> {selectedService?.name}</div>
+          <div className="mb-3"><strong>Afleveringsdato:</strong> {booking.drop_off_date}</div>
+          <div className="mb-3"><strong>Afhentningsdato:</strong> {booking.pick_up_date}</div>
+          <div className="mb-4"><strong>Total pris:</strong> {total_price} kr.</div>
 
-        <div className="mb-3">
-          <label className="form-label">Afleveringsdato:</label>
-          <input type="date" name="drop_off_date" className="form-control" onChange={handleChange} required />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Afhentningsdato:</label>
-          <input type="date" name="pick_up_date" className="form-control" onChange={handleChange} required />
-        </div>
-
-        {booking.service_id && (
-          <div className="alert alert-info">
-            Total pris: {total_price} kr.
+          <div className="d-grid gap-2">
+            <button onClick={handleSubmit} className="btn btn-success">Bekræft booking</button>
+            <button onClick={() => setConfirmStep(false)} className="btn btn-secondary">Tilbage</button>
           </div>
-        )}
+        </div>
+      ) : (
+        <div>
+          <h2 className="mb-4 text-center">Opret booking</h2>
+          <form onSubmit={handleConfirm}>
+            <div className="mb-3">
+              <label className="form-label">Service:</label>
+              <select name="service_id" className="form-select" onChange={handleChange} required>
+                <option value="">Vælg en service</option>
+                {services.map(s => (
+                  <option key={s.id} value={s.id}>{s.name + ' (' + s.price + ' kr)'}</option>
+                ))}
+              </select>
+            </div>
 
-        <button type="submit" className="btn btn-primary w-100">Gå til bekræftelse</button>
-      </form>
+            <div className="mb-3">
+              <label className="form-label">Afleveringsdato:</label>
+              <input type="date" name="drop_off_date" className="form-control" onChange={handleChange} required />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Afhentningsdato:</label>
+              <input type="date" name="pick_up_date" className="form-control" onChange={handleChange} required />
+            </div>
+
+            {booking.service_id && (
+              <div className="alert alert-info">
+                Total pris: {total_price} kr.
+              </div>
+            )}
+
+            <button type="submit" className="btn btn-primary w-100">Gå til bekræftelse</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

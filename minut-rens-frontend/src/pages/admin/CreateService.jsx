@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateService = () => {
   const [service, setService] = useState({ name: '', price: '', description: '' });
-    
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -12,18 +11,15 @@ const CreateService = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(service);
-    
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-
-        await axios.post('https://minut-rens-backend-production.up.railway.app/services', service, {
+      await axios.post('https://minut-rens-backend-production.up.railway.app/services', service, {
         headers: {
-        Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`
         }
-    });
-    navigate('/services/admin');
+      });
+      navigate('/services/admin');
     } catch (err) {
       console.error(err);
       alert('Kunne ikke oprette service');
@@ -31,22 +27,22 @@ const CreateService = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Opret ny service</h2>
+    <div className="container mt-5 px-3" style={{ maxWidth: '600px' }}>
+      <h2 className="mb-4 text-center">Opret ny service</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label>Navn</label>
+          <label className="form-label">Navn</label>
           <input type="text" name="name" value={service.name} onChange={handleChange} className="form-control" required />
         </div>
         <div className="mb-3">
-          <label>Pris</label>
+          <label className="form-label">Pris</label>
           <input type="number" name="price" value={service.price} onChange={handleChange} className="form-control" required />
         </div>
-        <div className="mb-3">
-          <label>Beskrivelse</label>
-          <textarea type="text" name="description" rows="5" cols="40" className='form-control' value={service.description} onChange={handleChange}></textarea>
+        <div className="mb-4">
+          <label className="form-label">Beskrivelse</label>
+          <textarea name="description" rows="5" className='form-control' value={service.description} onChange={handleChange}></textarea>
         </div>
-        <button className="btn btn-primary" type="submit">Opret service</button>
+        <button className="btn btn-primary w-100" type="submit">Opret service</button>
       </form>
     </div>
   );

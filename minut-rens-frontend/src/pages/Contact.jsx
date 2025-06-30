@@ -2,11 +2,11 @@ import ContactForm from '../components/ContactForm';
 
 const ContactPage = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 px-3">
       <h1 className="mb-4 text-center">Kontakt os</h1>
-      <div className="row">
-        <div className="col-md-6 mb-4">
-          <div className="card p-4">
+      <div className="row row-cols-1 row-cols-md-2 g-4">
+        <div className="col">
+          <div className="card p-4 h-100">
             <h4>Åbningstider – København</h4>
             <ul className="list-unstyled">
               <li>Man – Fre: 11:00 – 17:30</li>
@@ -22,8 +22,8 @@ const ContactPage = () => {
             </p>
           </div>
         </div>
-        <div className="col-md-6 mb-4">
-          <div className="card p-4">
+        <div className="col">
+          <div className="card p-4 h-100">
             <h4>Send os en besked</h4>
             <ContactForm />
           </div>

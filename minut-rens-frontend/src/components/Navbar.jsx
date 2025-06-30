@@ -48,27 +48,24 @@ const Navbar = () => {
             )}
 
             {!token && (
-                <>
+              <>
                 <li className="nav-item">
-                <Link className="nav-link" to="/services">Services</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/kontakt">Kontakt</Link>
-              </li>
-                </>
-              
+                  <Link className="nav-link" to="/services">Services</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/kontakt">Kontakt</Link>
+                </li>
+              </>
             )}
           </ul>
 
-          <ul className="navbar-nav">
+          <div className="d-flex">
             {!token ? (
-              <li className="nav-item">
-                <Link className="btn btn-primary" to="/login">Login</Link>
-              </li>
+              <Link className="btn btn-primary" to="/login">Login</Link>
             ) : (
               <Logout />
             )}
-          </ul>
+          </div>
         </div>
       </div>
     </nav>

@@ -27,8 +27,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: '400px' }}>
-      <h2 className="mb-4">Log ind</h2>
+    <div className="container mt-5 px-3" style={{ maxWidth: '400px' }}>
+      <h2 className="mb-4 text-center">Log ind</h2>
       <form onSubmit={handleLogin}>
         <div className="mb-3">
           <label className="form-label">Email</label>
@@ -42,7 +42,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label">Kodeord</label>
           <input
             value={password}
@@ -54,13 +54,11 @@ const LoginForm = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Login
-        </button>
+        <button type="submit" className="btn btn-primary w-100">Login</button>
       </form>
-        <br></br>
-        <Link className="nav-link" to="/register">Opret bruger</Link>
-     
+      <div className="text-center mt-3">
+        <Link to="/register">Opret bruger</Link>
+      </div>
     </div>
   );
 };
