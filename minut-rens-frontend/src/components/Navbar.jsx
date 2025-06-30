@@ -8,16 +8,22 @@ const Navbar = () => {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState(null);
   const collapseRef = useRef(null);
+  const collapseInstanceRef = useRef(null);
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
     setRole(localStorage.getItem('role'));
   }, [location]);
 
-  const handleLinkClick = () => {
+  useEffect(() => {
     if (collapseRef.current) {
-      const collapseInstance = Collapse.getInstance(collapseRef.current) || new Collapse(collapseRef.current);
-      collapseInstance.hide();
+      collapseInstanceRef.current = new Collapse(collapseRef.current, { toggle: false });
+    }
+  }, []);
+
+  const handleLinkClick = () => {
+    if (collapseInstanceRef.current) {
+      collapseInstanceRef.current.hide();
     }
   };
 
