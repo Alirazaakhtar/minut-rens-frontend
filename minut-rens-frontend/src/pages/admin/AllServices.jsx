@@ -8,7 +8,7 @@ const AllServices = () => {
   useEffect(() => {
     const fetchServices = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get('https://minut-rens-backend-production.up.railway.app:8080/services', {
+      const res = await axios.get('https://minut-rens-backend-production.up.railway.app/services', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

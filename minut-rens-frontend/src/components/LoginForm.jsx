@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://minut-rens-backend-production.up.railway.app/auth/login', {
+      const res = await axios.post('localhost:8080/auth/login', {
         email,
         password,
       });
