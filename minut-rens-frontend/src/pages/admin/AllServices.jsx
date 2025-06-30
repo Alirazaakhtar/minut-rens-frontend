@@ -8,7 +8,7 @@ const AllServices = () => {
   useEffect(() => {
     const fetchServices = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8080/services', {
+      const res = await axios.get('https://minut-rens-backend-production.up.railway.app:8080/services', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -20,7 +20,7 @@ const AllServices = () => {
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem('token');
-    await axios.delete(`http://localhost:8080/services/${id}`, {
+    await axios.delete(`https://minut-rens-backend-production.up.railway.app/services/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

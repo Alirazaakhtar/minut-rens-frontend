@@ -14,7 +14,7 @@ const RegisterForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/auth/register', formData);
+      await axios.post('https://minut-rens-backend-production.up.railway.app/auth/register', formData);
       navigate('/login');
     } catch (err) {
       alert(err.response?.data?.error || 'Fejl ved oprettelse');

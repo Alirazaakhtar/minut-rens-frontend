@@ -11,7 +11,7 @@ const AdminUsersPage = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:8080/users', {
+        const res = await axios.get('https://minut-rens-backend-production.up.railway.app/users', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);

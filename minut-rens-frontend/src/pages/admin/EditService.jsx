@@ -10,7 +10,7 @@ const EditService = () => {
   useEffect(() => {
     const fetchService = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://localhost:8080/services/${id}`, {
+      const res = await axios.get(`https://minut-rens-backend-production.up.railway.app/services/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -23,7 +23,7 @@ const EditService = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    await axios.put(`http://localhost:8080/services/${id}`, service, {
+    await axios.put(`https://minut-rens-backend-production.up.railway.app/services/${id}`, service, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -15,7 +15,7 @@ const CreateBooking = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/services')
+    axios.get('https://minut-rens-backend-production.up.railway.app/services')
       .then(res => setServices(res.data))
       .catch(err => console.error('Fejl ved hentning af services:', err));
   }, []);
@@ -40,7 +40,7 @@ const CreateBooking = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8080/bookings', bookingData, {
+      await axios.post('https://minut-rens-backend-production.up.railway.app/bookings', bookingData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

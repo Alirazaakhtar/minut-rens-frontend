@@ -18,7 +18,7 @@ const CreateService = () => {
     try {
       const token = localStorage.getItem('token');
 
-        await axios.post('http://localhost:8080/services', service, {
+        await axios.post('https://minut-rens-backend-production.up.railway.app/services', service, {
         headers: {
         Authorization: `Bearer ${token}`
         }

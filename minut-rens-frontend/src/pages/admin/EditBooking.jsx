@@ -14,8 +14,8 @@ const EditBooking = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [bookingRes, servicesRes] = await Promise.all([
-        axios.get(`http://localhost:8080/bookings/${id}`, { headers }),
-        axios.get(`http://localhost:8080/services`, { headers }),
+        axios.get(`https://minut-rens-backend-production.up.railway.app/bookings/${id}`, { headers }),
+        axios.get(`https://minut-rens-backend-production.up.railway.app/services`, { headers }),
       ]);
 
       setBooking(bookingRes.data);
@@ -45,7 +45,7 @@ const EditBooking = () => {
           pick_up_date: formatDate(booking.pick_up_date),
         };
 
-      await axios.put(`http://localhost:8080/bookings/${id}`, bookingData, {
+      await axios.put(`https://minut-rens-backend-production.up.railway.app/bookings/${id}`, bookingData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate('/bookings/admin');

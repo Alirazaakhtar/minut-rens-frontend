@@ -11,7 +11,7 @@ const AdminPage = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:8080/bookings/admin', {
+        const res = await axios.get('https://minut-rens-backend-production.up.railway.app/bookings/admin', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBookings(res.data);
@@ -32,7 +32,7 @@ const AdminPage = () => {
     if (!searchId) return;
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://localhost:8080/bookings/${searchId}`, {
+      const res = await axios.get(`https://minut-rens-backend-production.up.railway.app/bookings/${searchId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.data) {

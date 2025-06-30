@@ -14,7 +14,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    await axios.post('http://localhost:8080/contact', form, {
+    await axios.post('https://minut-rens-backend-production.up.railway.app/contact', form, {
       headers: { Authorization: `Bearer ${token}` }
     });
     navigate('/tak');

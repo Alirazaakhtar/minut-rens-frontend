@@ -10,7 +10,7 @@ const EditUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://localhost:8080/users/${id}`, {
+      const res = await axios.get(`https://minut-rens-backend-production.up.railway.app/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(res.data);
@@ -25,7 +25,7 @@ const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    await axios.put(`http://localhost:8080/users/${id}`, user, {
+    await axios.put(`https://minut-rens-backend-production.up.railway.app/users/${id}`, user, {
       headers: { Authorization: `Bearer ${token}` },
     });
     navigate('/users');

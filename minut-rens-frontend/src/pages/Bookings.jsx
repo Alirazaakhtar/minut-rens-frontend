@@ -8,7 +8,7 @@ const Bookings = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:8080/bookings', {
+        const res = await axios.get('https://minut-rens-backend-production.up.railway.app/bookings', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
