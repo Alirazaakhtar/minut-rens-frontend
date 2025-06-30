@@ -19,6 +19,7 @@ import ThankYou from './pages/ThankYou';
 import BookingThankYou from './pages/BookingThankYou';
 import EditUser from './pages/admin/EditUser';
 import ContactPage from './pages/Contact';
+import RegistrationSuccess from './pages/RegistrationSuccess';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/tak" element={<ThankYou />} />
         <Route path="/modtaget" element={<BookingThankYou />} />
         <Route path="/kontakt" element={<ContactPage />} />
+        <Route path='/oprettet' element={<RegistrationSuccess/>} />
 
 
         
