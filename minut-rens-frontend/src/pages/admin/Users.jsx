@@ -22,7 +22,7 @@ const AdminUsersPage = () => {
   }, []);
 
   const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase()) ||
+    user.id ||
     user.email.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -32,7 +32,7 @@ const AdminUsersPage = () => {
 
       <input
         type="text"
-        placeholder="Søg efter navn eller email..."
+        placeholder="Søg efter id eller email..."
         className="form-control mb-4"
         value={search}
         onChange={e => setSearch(e.target.value)}
