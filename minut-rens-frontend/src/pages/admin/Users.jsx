@@ -56,7 +56,7 @@ const AdminUsersPage = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.role}</td>
-                <td><Link className='btn btn-primary btn-sm' to={`/users/edit/${user.id}`}>Updater</Link></td>
+                <td><Link className='btn btn-primary btn-sm' to={`/users/edit/${user.id}`}>Opdater</Link></td>
               </tr>
             ))}
           </tbody>
