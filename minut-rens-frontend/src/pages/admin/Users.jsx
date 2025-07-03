@@ -22,8 +22,8 @@ const AdminUsersPage = () => {
   }, []);
 
   const filteredUsers = users.filter(user =>
-    user.id ||
-    user.email.toLowerCase().includes(search.toLowerCase())
+  user.id.toString().includes(search) ||
+  user.email.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
